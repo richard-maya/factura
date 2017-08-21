@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="assets/metro-modal/css/metromodal.min.css">
+</head>
+<body>
+ 
+ <h1>Tutorial #3</h1>
+<h2>Convert a Hidden DIV into a modal</h2>
+
+<button id="botPress">Click Me</button>
+
+
+<div class="MetroDiv1 metromodaldiv">
+
+	<div class="SomeCustomClass">
+		<h1>Hello</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua.
+		</p>
+	</div>
+
+</div>
+  
+<script src="assets/jquery/jquery.min.js"></script>  
+<script src="assets/metro-modal/js/metromodal.min.js"></script>
+
+<script type="text/javascript">
+
+$("#botPress").on("click",function(){
+
+
+	$(".MetroDiv1").MetroModal({
+			backscreencolor: "#a310b0",
+			backcolor: "#a310b0",
+			width: "250px",
+			controls: false,
+			height: "200px",
+			backscreen: true,
+			backscreenopacity: 0.3,
+			animation: "bounceInLeft"
+		});
+
+});
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<!--**********************************************************************
+* FILENAME :        EASYS WEB | Factura             
+*
+* DESCRIPTION :
+*       Form to generate invoices.
+*
+*       Copyright GEM Cintegran SA de CV © All rights reserved.
+* 
+* AUTHOR :    Richard Maya
+* START DATE :    17 Aug 17
+*
+* VERSION : 1.0
+*
+*-->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Cache-control" content="public, max-age:1209600" />
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="copyright" content="Copyright © 2017 GEM Cintegran SA de CV">
+    
+    <!-- SITE TITLE
+    ================================================== -->
+    <title>Sistema de adimnistración y facturación CFDi | Easys Web</title>
+    
+    <!-- FAVICONS
+    ================================================== -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16x16.png">
+    <link rel="manifest" href="favicons/manifest.json">
+    <link rel="mask-icon" href="favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="favicons/favicon.ico">
+    <meta name="msapplication-config" content="favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
+    <!-- SEO INFO
+    ================================================== -->
+    <meta name="description" content="EASyS Web es una plataforma web con la que puedes emitir comprobantes electrónicos CFDi y llevar una mejor administración de tu negocio.">
+    <meta name="keywords" content="generación de factura electrónica sat, factura electronica xml sat, emitir factura electrónica, factura electrónica mexico, factura electrónica en línea fel, factura electrónica fiel, easys web, cintegran, factura toluca metepec">
+    <meta name="author" content="GEM Cintegran">
+    <meta name="designer" content="Richard Maya">
+    <meta name="geo.region" content="MX-MEX" />
+    <meta name="geo.placename" content="Metepec" />
+    <meta name="geo.position" content="19.262697;-99.621391" />
+    <meta name="ICBM" content="19.262697, -99.621391" />
+    
+    <!-- STYLESHEETS
+    ================================================== -->
+    <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="assets/metro-modal/css/metromodal.min.css">
+</head>
+<body>
+<!-- NAV BAR
+================================================== -->
+<nav class="navbar navbar-dark" style="background-color: #7F1530;">
+  <a class="navbar-brand" href="#">
+    <img src="gph/easys-navbar.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    &nbsp; EASyS Web
+  </a>
+</nav>
+
+
+<!-- CONTENIDO
+================================================== -->
+<div class="container">
+    <div class="tab-panels">
+        <ul class="tabs">
+            <li rel="general" class="active">Datos Generales</li>
+            <li rel="conceptos">Conceptos</li>
+            <li rel="confirmacion">Confirmación</li>
+        </ul>
+
+       
+       
+        <!-- DATOS GENERALES
+        ================================================== -->
+        <div id="general" class="panel active">
+
+            <div class="row">
+               
+                <!-- Left Column -->
+                <div class="col-10 offset-1 col-md-4 offset-md-0">
+                    <img src="gph/easys-logo.png" alt="easys-web-logo" class="img-fluid">
+                    <br>
+                    <h5 class="lead">Nombre del Cliente</h5>
+                    <p>Adrián Rebollar</p>
+                    <br>
+                    <h5 class="lead">Tipo de Cambio</h5>
+                    <p>$18.00</p>
+                </div>
+                
+                <!-- Right Column -->
+                <div class="col-10 offset-1 col-md-8 offset-md-0">
+                    <form name="generalInfo" class="form" action="" method="POST" enctype="multipart/form-data" role="form">
+                        <div class="form-row">
+                           
+                            <div class="form-group col-md-2"></div>
+                            
+                            <!-- Uso Factura -->
+                            <div class="form-group col-md-4">
+                                <label for="usoFactura" class="col-form-label">Uso Factura</label>
+                                <select class="form-control" name="usoFactura" id="usoFactura">
+                                    <option value="Uso de Factura">Uso de Factura</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Número de Folio -->
+                            <div class="col-md-4">
+                                <h5 class="lead text-right">Número de Folio</h5>
+                                <p class="text-right">6664312</p>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                          
+                            <div class="form-group col-md-2"></div>
+                           
+                            <!-- Serie -->
+                            <div class="form-group col-md-4">
+                                <label for="serie" class="col-form-label">Serie:</label>
+                                <input type="number" class="form-control" id="serie" placeholder="Serie">
+                            </div>
+                        </div>
+                          
+                        <div class="form-row">
+                          
+                            <div class="form-group col-md-2"></div>
+                           
+                            <!-- Moneda -->
+                            <div class="form-group col-md-4">
+                                <label for="moneda" class="col-form-label">Moneda:</label>
+                                <input type="text" class="form-control" id="moneda" placeholder="Moneda">
+                            </div>
+                            
+                            <!-- Tipo de Cambio -->
+                            <div class="form-group col-md-4">
+                                <label for="tipoCambio" class="col-form-label">Tipo de Cambio:</label>
+                                <input type="text" class="form-control" id="tipoCambio" placeholder="Tipo de Cambio">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                          
+                            <div class="form-group col-md-2"></div>
+                           
+                            <!-- Forma de Pago -->
+                            <div class="form-group col-md-4">
+                                <label for="formaPago" class="col-form-label">Forma de Pago:</label>
+                                <select class="form-control" name="formaPago" id="formaPago">
+                                    <option value="Forma de Pago">Forma de Pago</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Método de Pago -->
+                            <div class="form-group col-md-4">
+                                <label for="metodoPago" class="col-form-label">Método de Pago:</label>
+                                <select class="form-control" name="metodoPago" id="metodoPago">
+                                    <option value="Método de Pago">Método de Pago</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                          
+                            <div class="form-group col-md-2"></div>
+                           
+                            <!-- Condiciones de Pago -->
+                            <div class="form-group col-md-8">
+                                <label for="condiciones" class="col-form-label">Condiciones de Pago:</label>
+                                <input type="text" class="form-control" id="condiciones" placeholder="Condiciones de Pago">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                           
+                            <div class="form-group col-md-2"></div>
+                            
+                            <div class="form-group col-md-8 text-right">
+                                <button type="button" class="btn btn-primary" role="button">Continuar <i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+                            </div>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+       
+       
+        <!-- CONCEPTOS DE COMPRA
+        ================================================== -->
+        <div id="conceptos" class="panel">
+            <div class="row">
+                
+                <div class="col-10 offset-1 col-md-12 offset-md-0 text-right">
+                    <button type="button" class="btn btn-primary btn-sm" id="botPress">Agregar Concepto <i class="fa fa-plus fa-lg" aria-hidden="true"></i></button>
+                    <br><br>
+                </div>
+                
+                
+                <!-- Modal Window -->
+                <div class="MetroDiv1 metromodaldiv">
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <form name="captura" class="form" action="" method="POST" enctype="multipart/form-data" role="form">
+
+                                <div class="form-row">
+
+                                    <!-- Cue. Servicio -->
+                                    <div class="form-group col-md-4">
+                                        <label for="cueServicio" class="col-form-label">Cue. Servicio:</label>
+                                        <input type="text" class="form-control" id="cueServicio" placeholder="Servicio">
+                                    </div>
+
+                                    <!-- Cantidad -->
+                                    <div class="form-group col-md-4">
+                                        <label for="cantidad" class="col-form-label">Cantidad:</label>
+                                        <input type="number" class="form-control" id="cantidad" placeholder="Cantidad">
+                                    </div>
+
+                                    <!-- Unidad -->
+                                    <div class="form-group col-md-4">
+                                        <label for="unidad" class="col-form-label">Unidad:</label>
+                                        <input type="text" class="form-control" id="unidad" placeholder="Unidad">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+
+                                    <!-- Cue. Unidad -->
+                                    <div class="form-group col-md-4">
+                                        <label for="cueUnidad" class="col-form-label">Cue. Unidad:</label>
+                                        <input type="text" class="form-control" id="cueUnidad" placeholder="Cue Unidad">
+                                    </div>
+
+                                    <!-- Identificación-->
+                                    <div class="form-group col-md-4">
+                                        <label for="identificacion" class="col-form-label">No. Identificación:</label>
+                                        <input type="number" class="form-control" id="identificacion" placeholder="No. Identificación">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+
+                                    <!-- Descripción -->
+                                    <div class="form-group col-md-8">
+                                        <label for="descripcion" class="col-form-label">Descripción:</label>
+                                        <input type="text" class="form-control" id="descripcion" placeholder="Descripción">
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+
+                                    <!-- PV -->
+                                    <div class="form-group col-md-3">
+                                        <label for="pv" class="col-form-label">PV:</label>
+                                        <input type="number" class="form-control" id="pv" placeholder="PV">
+                                    </div>
+
+                                    <!-- Importe -->
+                                    <div class="form-group col-md-3">
+                                        <label for="importe" class="col-form-label">Importe:</label>
+                                        <input type="number" class="form-control" id="importe" placeholder="Importe">
+                                    </div>
+
+                                    <!-- Impuesto -->
+                                    <div class="form-group col-md-3">
+                                        <label for="impuesto" class="col-form-label">Impuesto:</label>
+                                        <select class="form-control" name="impuesto" id="impuesto">
+                                            <option value="impuesto">Impuesto</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Tasa -->
+                                    <div class="form-group col-md-3">
+                                        <label for="tasa" class="col-form-label">Tasa:</label>
+                                        <select name="tasa" id="tasa" class="form-control">
+                                            <option value="Tasa">Tasa</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+
+                                    <div class="form-group col-md-3"></div>
+
+                                    <!-- Descuento -->
+                                    <div class="form-group col-md-3">
+                                        <label for="descuento" class="col-form-label">Descuento:</label>
+                                        <input type="number" class="form-control" id="descuento" placeholder="Descuento">
+                                    </div>
+
+                                </div>
+
+                                <!-- Botón Agregar -->
+                                <div class="form-row">
+                                    <div class="form-group col-md-12 text-right">
+                                        <button type="button" class="btn btn-primary" role="button">Agregar <i class="fa fa-plus fa-lg" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div> <!-- End of modal window -->
+                  
+                   
+                <div class="col-12 justify-content-center">
+                    <!-- Conceptos -->
+                    <table class="table table-striped table-bordered table-sm table-responsive">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>[Title]</th>
+                                <th>[Title]</th>
+                                <th>[Title]</th>
+                                <th>[Title]</th>
+                                <th>[Title]</th>
+                                <th>[Title]</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                   
+                <div class="col-1 col-md-6"></div>
+                
+                <div class="col-10 col-md-6">
+                   
+                    <!-- Resumen -->
+                    <table class="table table-bordered table-striped table-sm table-responsive">
+                        <tbody>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>[data]</td>
+                            </tr>
+                            <tr>
+                                <td>Descuento</td>
+                                <td>[data]</td>
+                            </tr>
+                            <tr>
+                                <td>Impuesto</td>
+                                <td>[data]</td>
+                            </tr>
+                            <tr>
+                                <td>Impuesto Retenido</td>
+                                <td>[data]</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th>[Title]</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                    
+                <div class="form-group col-md-6"></div>
+                            
+                <div class="form-group col-md-6 text-center">
+                    <button type="button" class="btn btn-default" role="button">Guardar <i class="fa fa-floppy-o" aria-hidden="true"></i></button> &nbsp;
+                    
+                    <button type="button" class="btn btn-primary" role="button">Emitir <i class="fa fa-file-text" aria-hidden="true"></i></button>
+                </div>
+
+            </div>
+
+        </div>
+
+        
+        
+        <!-- CONFIRMACIÓN
+        ================================================== -->
+        <div id="confirmacion" class="panel">
+
+            <div class="row">
+               
+                <div class="col-1"></div>
+               
+                <div class="col-10">
+                    <table class="table table-bordered table-striped table-sm table-responsive">
+                        <tbody>
+                            <tr>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                            </tr>
+                            <tr>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                            </tr>
+                            <tr>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                            </tr>
+                            <tr>
+                                <td>[data]</td>
+                                <td>[data]</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total</th>
+                                <th>[Title]</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                   
+                <div class="form-group col-md-3"></div>
+                            
+                <div class="form-group col-md-6 text-center">
+                    <button type="button" class="btn btn-default" role="button"><i class="fa fa-chevron-left" aria-hidden="true"></i> Regresar </button> &nbsp;
+                    
+                    <button type="button" class="btn btn-primary" role="button">Aceptar <i class="fa fa-check" aria-hidden="true"></i></button>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer class="fixed-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>Copyright © 2017 <a href="http://www.cintegran.com.mx" rel="author" target="_blank">GEM Cintegran</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- GEO TAGS VALIDATOR
+================================================== -->
+<a href="http://www.geo-tag.de" title="This page contains geo-tags" style="display: none; visibility: hidden;">
+    <img src="http://www.geo-tag.de/icon/geotag_l.png" width="97" height="32" style="border-style:none;" alt="This page contains geo-tags" />
+</a>
+
+
+<!-- SCRIPTS
+================================================== -->
+<script src="assets/jquery/jquery.min.js"></script>
+<!--<script src="assets/popper/popper.min.js"></script>-->
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/metro-modal/js/metromodal.min.js"></script>
+<script type="text/javascript">
+/* Modal */    
+$("#botPress").on("click",function(){$(".MetroDiv1").MetroModal({backscreencolor: "#7F1530",backcolor: "#ffffff",width: "80%",controls: true,backscreen: true,backscreenopacity: 0.5,animation: "fadeInDown"});});
+    
+/* Tabs */
+$(function(){$(".tab-panels .tabs li").on("click",function(){var a=$(this).closest(".tab-panels");a.find(".tabs li.active").removeClass("active");$(this).addClass("active");var b=$(this).attr("rel");a.find(".panel.active").slideUp(300,function(){$(this).removeClass("active");$("#"+b).slideDown(300,function(){$(this).addClass("active")})})})});
+</script>
+</body>
+</html>
